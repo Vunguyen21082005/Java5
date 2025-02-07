@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head>
+    <meta charset="UTF-8">
+    <title>Dong Vat</title>
+</head>
+<body>
+<form action="/dong-vat/add" method="post"  >
+    <label>Id</label>
+    <input type="text" name="id" required > <br>
+    <label>Ten</label>
+    <input type="text" name="ten" required> <br>
+    <label>Tuoi</label>
+    <input type="text" name="tuoi" required> <br>
+    <label>Loai</label>
+    <select name="loai">
+        <option th:each="d :${list}"
+        th:value="d.id"
+        th:text="${d.loai}"></option>
+    </select>
+    <label>Dia Chi</label>
+    <input type="text" name="diaChi" required> <br>
+    <label>Gioi Tinh</label>
+    <input type="radio" name="gioiTinh" checked > Duc
+    <input type="radio" name="gioiTinh" checked > Cai <br>
+    <button type="submit">Add</button>
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>ID</th>
+        <th>Ten</th>
+        <th>Tuoi</th>
+        <th>Loai</th>
+        <th>Dia Chi</th>
+        <th>Gioi Tinh</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dv,i :${list}">
+        <td th:text="${i.count}"></td>
+        <td th:text="${dv.id}"></td>
+        <td th:text="${dv.ten}"></td>
+        <td th:text="${dv.tuoi}"></td>
+        <td th:text="${dv.loai}"></td>
+        <td th:text="${dv.diaChi}"></td>
+        <td th:text="${dv.gioiTinh}"></td>
+        <td>
+            <a th:href="@{/dong-vat/delete/{id} (id=${dv.id})}">Delete</a>
+            <a th:href="@{/dong-vat/detail/{id} (id=${dv.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

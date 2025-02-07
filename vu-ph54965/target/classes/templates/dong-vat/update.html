@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/dong-vat/update" method="post" th:object="${list}">
+    <label>Id</label>
+    <input type="text" name="id" readonly th:value="${list.id}"> <br>
+    <label>Ten</label>
+    <input type="text" name="ten" required> <br>
+    <label>Tuoi</label>
+    <input type="text" name="tuoi" required> <br>
+    <label>Loai</label>
+    <select name="loai">
+        <option th:each="d :${list}"
+                th:value="d.id"
+                th:text="${d.loai}"></option>
+    </select>
+    <label>Dia Chi</label>
+    <input type="text" name="diaChi" required> <br>
+    <label>Gioi Tinh</label>
+    <input type="radio" name="gioiTinh" checked > Duc
+    <input type="radio" name="gioiTinh" checked > Cai <br>
+    <button type="submit">update</button>
+</form>
+</body>
+</html>
